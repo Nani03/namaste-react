@@ -4,7 +4,7 @@ import React from 'react'
 
 const Search = ({resData, setResData}) => {
     const topRatedFilterBtnHandler = () => {
-        const filteredData = resData.filter((res) => res.info.avgRating > 4);
+        const filteredData = resData.filter((res) => res.info.avgRating > 4.3);
         setResData(filteredData);
         console.log(filteredData)
       }
