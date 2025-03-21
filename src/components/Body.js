@@ -6,11 +6,14 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [resData, setResData] = useState([]);
-
+  const [filteredResList, setFilteredResList] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const data = await getRestaurantData();
       setResData(
+        data.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants
+      );
+      setFilteredResList(
         data.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants
       );
     };
@@ -18,14 +21,13 @@ const Body = () => {
     fetchData();
   }, []);
 
-  if (resData.length === 0) {
-    return <Shimmer />;
-  }
-  return (
+  return resData?.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
-      <Search resData={resData} setResData={setResData} />
+      <Search resData={resData} filteredResList ={filteredResList} setFilteredResList={setFilteredResList} />
       <div className="cards-container">
-        {resData.map((res) => {
+        {filteredResList.map((res) => {
           return <RestaurantCard key={res.info.id} resData={res} />;
         })}
       </div>
