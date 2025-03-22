@@ -7,6 +7,7 @@ header {
     justify-content: space-between;
     border: 1px solid black;
 }
+
 nav > ul{
     display: flex;
     font-size : 20px
@@ -24,9 +25,16 @@ nav > ul > li:hover {
     height: 100px;
 }
 
-.search-container{
+.search-container {
     margin: 10px;
+    display: flex;
 }
+
+.search-container .search-btn{
+    margin: 0 5px;
+}
+
+
 .cards-container {
     display: flex;
     margin: 10px;

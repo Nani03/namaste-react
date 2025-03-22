@@ -1,10 +1,18 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const Search = ({ resData, filteredResList, setFilteredResList }) => {
   const [searchValue, setSearchValue] = useState("");
   
   const debounceTimeout = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (debounceTimeout.current) {
+        clearTimeout(debounceTimeout.current);
+      }
+    };
+  }, []);
 
   const topRatedFilterBtnHandler = () => {
     const filteredData = filteredResList.filter((res) => res.info.avgRating > 4.3);
@@ -28,7 +36,7 @@ const Search = ({ resData, filteredResList, setFilteredResList }) => {
     // Set a new timeout
     debounceTimeout.current = setTimeout(() => {
       searchHandler();
-    }, 100);
+    }, 400);
   };
   return (
     <div className="search-container">
