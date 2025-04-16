@@ -2,26 +2,15 @@ import { useEffect, useState } from "react";
 import getRestaurantMenu from "../services/getRestaurantMenu";
 import { useParams } from "react-router";
 import Shimmer from "../components/Shimmer";
+import useRestaurantMenu from "../hooks/useRestaurantMenu";
 
 const Restaurants = () => {
   const { resId } = useParams();
-  const [resMenu, setResmenu] = useState(null);
-  const [loading, setLoading] = useState(true);
+  
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getRestaurantMenu(resId);
-        setResmenu(data);
-      } catch (error) {
-        console.log("Error fetching menu:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-  if (loading || !resMenu) {
+  const {resMenu, loading} = useRestaurantMenu(resId);
+ 
+  if (loading) {
     return <Shimmer />;
   }
 
