@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withIsOpenLabel } from "./RestaurantCard";
 import getRestaurantData from "../services/getRestaurantData";
 import Search from "./Search";
 import { useEffect, useState } from "react";
@@ -32,6 +32,7 @@ const Body = () => {
       </div>
     );
   }
+  const RestaurantCardOpen = withIsOpenLabel(RestaurantCard);
   return resData?.length === 0 ? (
     <Shimmer />
   ) : (
@@ -41,11 +42,15 @@ const Body = () => {
         filteredResList={filteredResList}
         setFilteredResList={setFilteredResList}
       />
-      <div className="cards-container">
+      <div className="flex flex-wrap justify-center">
         {filteredResList.map((res) => {
           return (
             <Link key={res.info.id} to={"/restaurants/" + res.info.id}>
-              <RestaurantCard resData={res} />
+              {res.info.sla.deliveryTime < 30 ? (
+                <RestaurantCardOpen resData={res} />
+              ) : (
+                <RestaurantCard resData={res} />
+              )}
             </Link>
           );
         })}

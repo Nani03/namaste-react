@@ -39,21 +39,21 @@ const Search = ({ resData, filteredResList, setFilteredResList }) => {
     }, 400);
   };
   return (
-    <div className="search-container">
+    <div className="search-container flex mx-5 p-4">
       <div className="search">
         <input
           type="text"
-          className="search"
+          className="border-1 border-gray-400 rounded-lg p-2 w-60"
           placeholder="Search for restaurants"
           value={searchValue}
           onChange={searchInputHandler}
         />
       </div>
-      <button className="search-btn" onClick={searchHandler}>
+      <button className="bg-green-100 rounded-lg px-4 mx-4" onClick={searchHandler}>
         Search
       </button>
 
-      <button className="filter-btn" onClick={topRatedFilterBtnHandler}>
+      <button className="filter-btn rounded-lg bg-gray-100 px-4" onClick={topRatedFilterBtnHandler}>
         Top Rated Restaurants
       </button>
     </div>

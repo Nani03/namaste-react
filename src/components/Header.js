@@ -7,10 +7,10 @@ const Header = () => {
   const [signInButtonName, setSignInButtonName] = useState("Sign In");
   const onlineStatus =  useOnlineStatus(); 
   return (
-    <header>
-      <img className="logo" src={LOGO_URL} alt="logo" />
-      <nav>
-        <ul>
+    <header className="flex justify-between bg-green-200 shadow-lg">
+      <img className="w-30" src={LOGO_URL} alt="logo" />
+      <nav className="content-center">
+        <ul className="flex justify-between items-center gap-4 mx-4">
           <li>Online Staus : {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <NavLink to="/">Home</NavLink>
