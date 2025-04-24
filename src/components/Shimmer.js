@@ -2,19 +2,19 @@ import React from "react";
 
 const Shimmer = () => {
   return (
-    <div className="shimmer-container">
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
+    <div className="flex flex-wrap justify-center items-center gap-4 p-4">
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
+      <div className="w-40 h-60 bg-gray-300"></div>
     </div>
   );
 };
