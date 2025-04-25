@@ -6,10 +6,12 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 
+
 const Body = () => {
   const [resData, setResData] = useState([]);
   const [filteredResList, setFilteredResList] = useState([]);
   const onlineStatus = useOnlineStatus();
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getRestaurantData();

@@ -1,11 +1,13 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink } from "react-router";
 import useOnlineStatus from "../hooks/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [signInButtonName, setSignInButtonName] = useState("Sign In");
-  const onlineStatus =  useOnlineStatus(); 
+  const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
   return (
     <header className="flex justify-between bg-green-200 shadow-lg">
       <img className="w-30" src={LOGO_URL} alt="logo" />
@@ -35,7 +37,7 @@ const Header = () => {
                 : setSignInButtonName("Sign In");
             }}
           >
-            {signInButtonName}
+            {signInButtonName} {loggedInUser}
           </button>
         </ul>
       </nav>

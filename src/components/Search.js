@@ -1,9 +1,11 @@
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import UserContext from "../utils/UserContext";
+
 
 const Search = ({ resData, filteredResList, setFilteredResList }) => {
   const [searchValue, setSearchValue] = useState("");
-  
+  const { loggedInUser, setUserName } = useContext(UserContext);
   const debounceTimeout = useRef(null);
 
   useEffect(() => {
@@ -56,7 +58,9 @@ const Search = ({ resData, filteredResList, setFilteredResList }) => {
       <button className="filter-btn rounded-lg bg-gray-100 px-4" onClick={topRatedFilterBtnHandler}>
         Top Rated Restaurants
       </button>
+      <input value={loggedInUser} onChange={(e) => setUserName(e.target.value)} className=" border-2 rounded-md mx-4 border-red-400"/>  
     </div>
+
   );
 };
 

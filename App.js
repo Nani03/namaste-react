@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, StrictMode } from "react";
+import React, { lazy, Suspense, StrictMode, useContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./src/components/Header";
 import Body from "./src/components/Body";
@@ -7,18 +7,24 @@ import About from "./src/pages/About";
 import Contact from "./src/pages/Contact";
 import ErrorPage from "./src/pages/ErrorPage";
 import Restaurants from "./src/pages/Restaurants";
+import UserContext from "./src/utils/UserContext";
 
 // import Grocery from "./src/pages/Grocery";
 
 const Grocery = lazy(() => import("./src/pages/Grocery"));
 
 const AppLayout = () => {
+  const { loggedInUser } = useContext(UserContext);
+  const [userName, setUserName] = useState(loggedInUser);
+
   return (
-    <div id="app">
-      <Header />
-      <Outlet />
-      {/* <Footer /> */}
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div id="app">
+        <Header />
+        <Outlet />
+        {/* <Footer /> */}
+      </div>
+    </UserContext.Provider>
   );
 };
 
